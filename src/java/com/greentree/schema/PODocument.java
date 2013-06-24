@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -11,7 +11,6 @@ import com.jadeworld.jade.persistence.DbField;
 import com.jadeworld.jade.persistence.DbProperty;
 import com.jadeworld.jade.persistence.Entity;
 import com.jadeworld.jade.persistence.Lob;
-import com.jadeworld.jade.persistence.ManyToOne;
 import com.jadeworld.jade.persistence.OneToMany;
 import com.jadeworld.jade.persistence.ReferenceRelationshipType;
 import com.jadeworld.jade.persistence.ReferenceUpdateMode;
@@ -19,25 +18,21 @@ import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 @Entity()
 public class PODocument extends com.jadeworld.jade.rootschema.Object {
 
-    @SuppressWarnings("unchecked")
-    @DbProperty()
-    @OneToMany(relationshipType = ReferenceRelationshipType.PEER,
-            updateMode = ReferenceUpdateMode.AUTOMATIC,
-            inverse = "myPODocument")
-    public LineItemArray<LineItem> getAllLineItems() {
-        return (LineItemArray<LineItem>) EntityAccess.getReferenceProperty(this, "allLineItems");
-    }
-
-    @SuppressWarnings("unchecked")
-    @DbProperty()
-    @OneToMany(relationshipType = ReferenceRelationshipType.PEER, 
-            updateMode = ReferenceUpdateMode.AUTOMATIC, 
-            inverse = "myPODocument")
-    public LineItemDictByUniqueKey<LineItem> getAllLineItemsByUniqueKey() {
-        return (LineItemDictByUniqueKey<LineItem>) EntityAccess.getReferenceProperty(this, "allLineItemsByUniqueKey");
-    }
     @DbField(type = "Date")
     public java.util.Calendar documentDate;
+    @DbField(type = "Decimal", length = 12, scale = 2)
+    public java.math.BigDecimal fcDiscount;
+    @DbField(type = "Decimal", length = 12, scale = 2)
+    public java.math.BigDecimal fcNetAmount;
+    @DbField(type = "Decimal", length = 12, scale = 2)
+    public java.math.BigDecimal fcTaxAmount;
+    @DbField(length = 20)
+    public String reference;
+    @DbField()
+    public boolean isPrinted;
+    @Lob()
+    @DbField()
+    public String standardText;
 
     public java.util.Calendar getDocumentDate() {
         return documentDate;
@@ -46,8 +41,6 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
     public void setDocumentDate(java.util.Calendar documentDate) {
         this.documentDate = documentDate;
     }
-    @DbField(type = "Decimal", length = 12, scale = 2)
-    public java.math.BigDecimal fcDiscount;
 
     public java.math.BigDecimal getFcDiscount() {
         return fcDiscount;
@@ -56,8 +49,6 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
     public void setFcDiscount(java.math.BigDecimal fcDiscount) {
         this.fcDiscount = fcDiscount;
     }
-    @DbField(type = "Decimal", length = 12, scale = 2)
-    public java.math.BigDecimal fcNetAmount;
 
     public java.math.BigDecimal getFcNetAmount() {
         return fcNetAmount;
@@ -66,8 +57,6 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
     public void setFcNetAmount(java.math.BigDecimal fcNetAmount) {
         this.fcNetAmount = fcNetAmount;
     }
-    @DbField(type = "Decimal", length = 12, scale = 2)
-    public java.math.BigDecimal fcTaxAmount;
 
     public java.math.BigDecimal getFcTaxAmount() {
         return fcTaxAmount;
@@ -76,8 +65,6 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
     public void setFcTaxAmount(java.math.BigDecimal fcTaxAmount) {
         this.fcTaxAmount = fcTaxAmount;
     }
-    @DbField()
-    public boolean isPrinted;
 
     public boolean getIsPrinted() {
         return isPrinted;
@@ -87,20 +74,6 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
         this.isPrinted = isPrinted;
     }
 
-    @DbProperty()
-    @ManyToOne(relationshipType = ReferenceRelationshipType.PEER,
-            updateMode = ReferenceUpdateMode.MANUAL,
-            inverses = {"allPODocuments"})
-    public POStatusDefinition getMyStatus() {
-        return (POStatusDefinition) EntityAccess.getReferenceProperty(this, "myStatus");
-    }
-
-    public void setMyStatus(POStatusDefinition myStatus) {
-        EntityAccess.setReferenceProperty(this, "myStatus", myStatus);
-    }
-    @DbField(length = 20)
-    public String reference;
-
     public String getReference() {
         return reference;
     }
@@ -108,9 +81,6 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
     public void setReference(String reference) {
         this.reference = reference;
     }
-    @Lob()
-    @DbField()
-    public String standardText;
 
     public String getStandardText() {
         return standardText;
@@ -118,5 +88,14 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
 
     public void setStandardText(String standardText) {
         this.standardText = standardText;
+    }
+
+    @SuppressWarnings("unchecked")
+    @DbProperty()
+    @OneToMany(relationshipType = ReferenceRelationshipType.PEER,
+            updateMode = ReferenceUpdateMode.AUTOMATIC,
+            inverse = "myPODocument")
+    public LineItemArray<LineItem> getAllLineItems() {
+        return (LineItemArray<LineItem>) EntityAccess.getReferenceProperty(this, "allLineItems");
     }
 }

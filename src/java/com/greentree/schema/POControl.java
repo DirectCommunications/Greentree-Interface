@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -18,15 +18,9 @@ public class POControl extends com.jadeworld.jade.rootschema.Object {
 
     @SuppressWarnings("unchecked")
     @DbProperty()
-    @OneToMany(relationshipType = ReferenceRelationshipType.PEER, updateMode = ReferenceUpdateMode.AUTOMATIC, inverse = "myPOControl")
+    @OneToMany(relationshipType = ReferenceRelationshipType.PEER,
+            updateMode = ReferenceUpdateMode.AUTOMATIC, inverse = "myPOControl")
     public POByReferenceDict<PODocument> getAllPOPurchaseOrders() {
         return (POByReferenceDict<PODocument>) EntityAccess.getReferenceProperty(this, "allPOPurchaseOrders");
-    }
-
-    @SuppressWarnings("unchecked")
-    @DbProperty()
-    @OneToMany(relationshipType = ReferenceRelationshipType.PEER, updateMode = ReferenceUpdateMode.AUTOMATIC, inverse = "myPOControl")
-    public StandingTransactionDict<StandingTransaction> getAllStandingPurchaseOrders() {
-        return (StandingTransactionDict<StandingTransaction>) EntityAccess.getReferenceProperty(this, "allStandingPurchaseOrders");
     }
 }

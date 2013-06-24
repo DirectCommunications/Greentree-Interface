@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -9,16 +9,25 @@ package com.greentree.schema;
 import com.jadeworld.jade.persistence.DbField;
 import com.jadeworld.jade.persistence.DbProperty;
 import com.jadeworld.jade.persistence.Entity;
+import com.jadeworld.jade.persistence.OneToMany;
 import com.jadeworld.jade.persistence.ReferenceRelationshipType;
 import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 import com.jadeworld.jade.entitymanager.EntityAccess;
-import com.jadeworld.jade.persistence.ManyToOne;
 
 @Entity()
 public class POPOINLineItem extends POPOLineItem {
 
     @DbField(type = "Decimal", length = 14, scale = 4)
     public java.math.BigDecimal allocatedQty;
+
+    @SuppressWarnings("unchecked")
+    @DbProperty()
+    @OneToMany(relationshipType = ReferenceRelationshipType.PEER,
+            updateMode = ReferenceUpdateMode.MAN_AUTO,
+            inverse = "myPOLineItem")
+    public SOPOLinkArray<SOPOLink> getAllSOPOLinks() {
+        return (SOPOLinkArray<SOPOLink>) EntityAccess.getReferenceProperty(this, "allSOPOLinks");
+    }
 
     public java.math.BigDecimal getAllocatedQty() {
         return allocatedQty;
@@ -28,13 +37,14 @@ public class POPOINLineItem extends POPOLineItem {
         this.allocatedQty = allocatedQty;
     }
 
-    @DbProperty()
-    @ManyToOne(relationshipType = ReferenceRelationshipType.PEER, updateMode = ReferenceUpdateMode.MANUAL, inverses = {"allPOLineItems"})
-    public StockItem getMyStockItem() {
-        return (StockItem) EntityAccess.getReferenceProperty(this, "myStockItem");
+    public String getDescription() {
+        return EntityAccess.sendMsgGetString(this, "getDescription");
     }
 
-    public void setMyStockItem(StockItem myStockItem) {
-        EntityAccess.setReferenceProperty(this, "myStockItem", myStockItem);
+    @Override
+    public String toString() {
+        return this.getQuantity().toString() + " x "
+                + this.codeString.trim() + " - "
+                + this.codeDescription.trim();
     }
 }

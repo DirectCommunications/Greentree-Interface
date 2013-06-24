@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -14,16 +14,7 @@ import com.jadeworld.jade.persistence.ReferenceRelationshipType;
 import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 
 @Entity()
-public class SOSOINLineItem extends LineItem {
-
-    @DbProperty(type = "Decimal", length = 14, scale = 4)
-    public java.math.BigDecimal getMargin() {
-        return EntityAccess.getDecimalProperty(this, "margin");
-    }
-
-    public void setMargin(java.math.BigDecimal margin) {
-        EntityAccess.setDecimalProperty(this, "margin", margin);
-    }
+public class SOSOINLineItem extends SOSOLineItem {
 
     @DbProperty()
     @ManyToOne(relationshipType = ReferenceRelationshipType.CHILD,
@@ -35,18 +26,6 @@ public class SOSOINLineItem extends LineItem {
 
     public void setMySalesOrder(SODocument mySalesOrder) {
         EntityAccess.setReferenceProperty(this, "mySalesOrder", mySalesOrder);
-    }
-
-    @DbProperty()
-    @ManyToOne(relationshipType = ReferenceRelationshipType.PEER,
-            updateMode = ReferenceUpdateMode.MANUAL,
-            inverses = {"allSOSOLines"})
-    public StockItem getMyStockItem() {
-        return (StockItem) EntityAccess.getReferenceProperty(this, "myStockItem");
-    }
-
-    public void setMyStockItem(StockItem myStockItem) {
-        EntityAccess.setReferenceProperty(this, "myStockItem", myStockItem);
     }
 
     @DbProperty(type = "Decimal", length = 14, scale = 4)

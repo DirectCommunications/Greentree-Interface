@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -11,5 +11,5 @@ import com.jadeworld.jade.rootschema.ObjectArray;
 
 @SuppressWarnings("unchecked")
 @CollectionEntity()
-public class INSerialLotLineItemArray<INSerialLotLineItem> extends ObjectArray<INSerialLotLineItem> {
+public class SOPOLinkArray<SOPOLink> extends ObjectArray<SOPOLink> {
 }

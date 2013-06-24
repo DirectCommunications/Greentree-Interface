@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -8,14 +8,17 @@ package com.greentree.schema;
 
 import com.jadeworld.jade.entitymanager.EntityAccess;
 import com.jadeworld.jade.persistence.DbProperty;
+import com.jadeworld.jade.persistence.DbField;
 import com.jadeworld.jade.persistence.Entity;
 import com.jadeworld.jade.persistence.OneToMany;
-import com.jadeworld.jade.persistence.OneToOne;
 import com.jadeworld.jade.persistence.ReferenceRelationshipType;
 import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 
 @Entity()
 public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
+
+    @DbField(length = 23)
+    public String reference;
 
     @DbProperty()
     public String getAdditionalDeliveryText() {
@@ -117,24 +120,6 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
         EntityAccess.setSLOBProperty(this, "faxNo", faxNo);
     }
 
-    @DbProperty(type = "Decimal", length = 14, scale = 2)
-    public java.math.BigDecimal getFcNetAmount() {
-        return EntityAccess.getDecimalProperty(this, "fcNetAmount");
-    }
-
-    public void setFcNetAmount(java.math.BigDecimal fcNetAmount) {
-        EntityAccess.setDecimalProperty(this, "fcNetAmount", fcNetAmount);
-    }
-
-    @DbProperty(type = "Decimal", length = 14, scale = 2)
-    public java.math.BigDecimal getFcTaxAmount() {
-        return EntityAccess.getDecimalProperty(this, "fcTaxAmount");
-    }
-
-    public void setFcTaxAmount(java.math.BigDecimal fcTaxAmount) {
-        EntityAccess.setDecimalProperty(this, "fcTaxAmount", fcTaxAmount);
-    }
-
     @DbProperty()
     public boolean getIsPrinted() {
         return EntityAccess.getBooleanProperty(this, "isPrinted");
@@ -144,14 +129,11 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
         EntityAccess.setBooleanProperty(this, "isPrinted", isPrinted);
     }
 
-    @DbProperty()
-    @OneToOne(relationshipType = ReferenceRelationshipType.PEER,
-            updateMode = ReferenceUpdateMode.MAN_AUTO, inverse = "mySODocument")
-    public UTAddressSODocument getMyAddress() {
-        return (UTAddressSODocument) EntityAccess.getReferenceProperty(this, "myAddress");
+    public String getReference() {
+        return reference;
     }
 
-    public void setMyAddress(UTAddressSODocument myAddress) {
-        EntityAccess.setReferenceProperty(this, "myAddress", myAddress);
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" >
+  <persistence-unit name="GreenTreeSchemaPU" >
+    <class>com.greentree.schema.JCJob</class>
+    <class>com.greentree.schema.LineItem</class>
+    <class>com.greentree.schema.LineItemArray</class>
+    <class>com.greentree.schema.POByReferenceDict</class>
+    <class>com.greentree.schema.POControl</class>
+    <class>com.greentree.schema.PODocument</class>
+    <class>com.greentree.schema.POPOGLLineItem</class>
+    <class>com.greentree.schema.POPOINLineItem</class>
+    <class>com.greentree.schema.POPOJCLineItem</class>
+    <class>com.greentree.schema.POPOLineItem</class>
+    <class>com.greentree.schema.POPurchaseOrder</class>
+    <class>com.greentree.schema.SODocument</class>
+    <class>com.greentree.schema.SOPOLink</class>
+    <class>com.greentree.schema.SOPOLinkArray</class>
+    <class>com.greentree.schema.SOSOINLineItem</class>
+    <class>com.greentree.schema.SOSOLineItem</class>
+    <class>com.greentree.schema.SOSalesOrder</class>
+    <class>com.greentree.schema.SalesOrderLine</class>
+    <class>com.greentree.schema.Supplier</class>
+<properties>
+  <property name="jade.database.multiuser" value="true"/>
+  <property name="jade.database.schema" value="GreenTreeSchema"/>
+  <property name="jade.database.application" value="GTODBCService"/>
+</properties>
+  </persistence-unit>
+</persistence>

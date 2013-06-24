@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -14,22 +14,21 @@ import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 import com.jadeworld.jade.entitymanager.EntityAccess;
 import com.jadeworld.jade.persistence.ManyToOne;
 
+/**
+ *
+ * @author Mike Aldred
+ */
 @Entity()
 public class SOPOLink extends com.jadeworld.jade.rootschema.Object {
 
-    @DbField()
-    public boolean isExceptLink;
-
-    public boolean getIsExceptLink() {
-        return isExceptLink;
-    }
-
-    public void setIsExceptLink(boolean isExceptLink) {
-        this.isExceptLink = isExceptLink;
-    }
-    
     @DbField(type = "Decimal", length = 14, scale = 4)
     public java.math.BigDecimal linkedPOQty;
+    @DbField(type = "Decimal", length = 14, scale = 4)
+    public java.math.BigDecimal linkedSOQty;
+    @DbField(type = "Decimal", length = 14, scale = 4)
+    public java.math.BigDecimal releasedPOQty;
+    @DbField(type = "Decimal", length = 14, scale = 4)
+    public java.math.BigDecimal releasedSOQty;
 
     public java.math.BigDecimal getLinkedPOQty() {
         return linkedPOQty;
@@ -38,9 +37,6 @@ public class SOPOLink extends com.jadeworld.jade.rootschema.Object {
     public void setLinkedPOQty(java.math.BigDecimal linkedPOQty) {
         this.linkedPOQty = linkedPOQty;
     }
-    
-    @DbField(type = "Decimal", length = 14, scale = 4)
-    public java.math.BigDecimal linkedSOQty;
 
     public java.math.BigDecimal getLinkedSOQty() {
         return linkedSOQty;
@@ -63,7 +59,9 @@ public class SOPOLink extends com.jadeworld.jade.rootschema.Object {
     }
 
     @DbProperty()
-    @ManyToOne(relationshipType = ReferenceRelationshipType.CHILD, updateMode = ReferenceUpdateMode.MAN_AUTO, inverses = {"allSOPOLinks"})
+    @ManyToOne(relationshipType = ReferenceRelationshipType.CHILD,
+            updateMode = ReferenceUpdateMode.MAN_AUTO,
+            inverses = {"allSOPOLinks"})
     public SOSOINLineItem getMySOLineItem() {
         return (SOSOINLineItem) EntityAccess.getReferenceProperty(this, "mySOLineItem");
     }
@@ -71,19 +69,6 @@ public class SOPOLink extends com.jadeworld.jade.rootschema.Object {
     public void setMySOLineItem(SOSOINLineItem mySOLineItem) {
         EntityAccess.setReferenceProperty(this, "mySOLineItem", mySOLineItem);
     }
-    @DbField(type = "Decimal", length = 14, scale = 4)
-    public java.math.BigDecimal poQtyTxfToPS;
-
-    public java.math.BigDecimal getPoQtyTxfToPS() {
-        return poQtyTxfToPS;
-    }
-
-    public void setPoQtyTxfToPS(java.math.BigDecimal poQtyTxfToPS) {
-        this.poQtyTxfToPS = poQtyTxfToPS;
-    }
-    
-    @DbField(type = "Decimal", length = 14, scale = 4)
-    public java.math.BigDecimal releasedPOQty;
 
     public java.math.BigDecimal getReleasedPOQty() {
         return releasedPOQty;
@@ -92,9 +77,6 @@ public class SOPOLink extends com.jadeworld.jade.rootschema.Object {
     public void setReleasedPOQty(java.math.BigDecimal releasedPOQty) {
         this.releasedPOQty = releasedPOQty;
     }
-    
-    @DbField(type = "Decimal", length = 14, scale = 4)
-    public java.math.BigDecimal releasedSOQty;
 
     public java.math.BigDecimal getReleasedSOQty() {
         return releasedSOQty;

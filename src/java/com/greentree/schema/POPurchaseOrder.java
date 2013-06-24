@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 Direct Communications
- * 
+ *
  * Licensed under the BSD License.
  */
 
@@ -11,24 +11,16 @@ import com.jadeworld.jade.persistence.DbField;
 import com.jadeworld.jade.persistence.DbProperty;
 import com.jadeworld.jade.persistence.Entity;
 import com.jadeworld.jade.persistence.ManyToOne;
-import com.jadeworld.jade.persistence.OneToMany;
 import com.jadeworld.jade.persistence.ReferenceRelationshipType;
 import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 
 @Entity()
 public class POPurchaseOrder extends PODocument {
 
-    @SuppressWarnings("unchecked")
-    @DbProperty()
-    @OneToMany(relationshipType = ReferenceRelationshipType.PARENT,
-            updateMode = ReferenceUpdateMode.AUTOMATIC,
-            inverse = "myPurchaseOrder")
-    public POReleaseSOLinkInfoDict<POReleaseSOLinkInfo> getAllPOReleaseSOLinkInfos() {
-        return (POReleaseSOLinkInfoDict<POReleaseSOLinkInfo>) EntityAccess.getReferenceProperty(this, "allPOReleaseSOLinkInfos");
-    }
-    
     @DbField(type = "Date")
     public java.util.Calendar expectedDate;
+    @DbField()
+    public boolean isOutstanding;
 
     public java.util.Calendar getExpectedDate() {
         return expectedDate;
@@ -37,9 +29,6 @@ public class POPurchaseOrder extends PODocument {
     public void setExpectedDate(java.util.Calendar expectedDate) {
         this.expectedDate = expectedDate;
     }
-    
-    @DbField()
-    public boolean isOutstanding;
 
     public boolean getIsOutstanding() {
         return isOutstanding;
