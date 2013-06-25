@@ -1,11 +1,11 @@
-(ns com.directcommunications.greentree.purchase-order
+(ns au.com.directcommunications.greentree.purchase-order
   "Namespace for handling Greentree purchase orders."
   (:import (com.greentree.schema POPurchaseOrder
                                  POPOINLineItem
                                  POPOGLLineItem
                                  POPOJCLineItem)))
 
-(defn transform-sopo-link
+(defn- transform-sopo-link
   "Takes a Greentree SOPOLink and transforms it into a map."
   [sopo-link]
   (if (> (.getLinkedSOQty sopo-link) 0)
@@ -43,7 +43,7 @@
   (sales-orders [this] nil)
   (job-reference [this] nil))
 
-(defn transform-line
+(defn- transform-line
   "Takes a purchase order line from Greentree, and returns a map of that
   line."
   [line]
@@ -53,7 +53,7 @@
    :sales-orders (sales-orders line)
    :job-reference (job-reference line)})
 
-(defn transform-purchase-order
+(defn- transform-purchase-order
   "Takes a purchase order, and returns a map."
   [purchase-order]
   {:purchase-order-number (.getReference purchase-order)

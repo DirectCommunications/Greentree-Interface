@@ -1,7 +1,7 @@
-(ns com.directcommunications.greentree.purchase-order-test
+(ns au.com.directcommunications.greentree.purchase-order-test
   "Unit tests for Greentree purchase order interface."
   (:require [midje.sweet :refer :all]
-            [com.directcommunications.greentree.purchase-order :as purchase-order]
+            [au.com.directcommunications.greentree.purchase-order :as purchase-order]
             [user :as dev-env]))
 
 (def valid-po "1")

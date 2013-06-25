@@ -1,4 +1,4 @@
-(ns com.directcommunications.greentree.system
+(ns au.com.directcommunications.greentree.system
   "Namespace for building up the system to connect to Greentree."
   (:import (com.jadeworld.jade.entitymanager
             EntityManager EntityManagerFactory Persistence)
