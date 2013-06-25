@@ -37,27 +37,27 @@ public class Supplier extends com.jadeworld.jade.rootschema.Object {
     public String purchaseOrderRecipientAddress;
 
     public String getAddress1() {
-        return address1;
+        return address1.trim();
     }
 
     public void setAddress1(String address1) {
-        this.address1 = address1;
+        this.address1 = address1.trim();
     }
 
     public String getAddress2() {
-        return address2;
+        return address2.trim();
     }
 
     public void setAddress2(String address2) {
-        this.address2 = address2;
+        this.address2 = address2.trim();
     }
 
     public String getAddress3() {
-        return address3;
+        return address3.trim();
     }
 
     public void setAddress3(String address3) {
-        this.address3 = address3;
+        this.address3 = address3.trim();
     }
 
     @SuppressWarnings("unchecked")
@@ -70,49 +70,48 @@ public class Supplier extends com.jadeworld.jade.rootschema.Object {
     }
 
     public String getCode() {
-        return code;
+        return code.trim();
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.code = code.trim();
     }
 
     public String getFax() {
-        return fax;
+        return fax.trim();
     }
 
     public void setFax(String fax) {
-        this.fax = fax;
+        this.fax = fax.trim();
     }
 
     @Override
     public String getName() {
-        return name;
+        return name.trim();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.trim();
     }
 
     public String getPhone() {
-        return phone;
+        return phone.trim();
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone.trim();
     }
 
     public String getPurchaseOrderRecipientAddress() {
-        return purchaseOrderRecipientAddress;
+        return purchaseOrderRecipientAddress.trim();
     }
 
     public void setPurchaseOrderRecipientAddress(String purchaseOrderRecipientAddress) {
-        this.purchaseOrderRecipientAddress = purchaseOrderRecipientAddress;
+        this.purchaseOrderRecipientAddress = purchaseOrderRecipientAddress.trim();
     }
 
     @Override
     public String toString() {
-        String result = "Supplier: " + name;
-        return result;
+        return "Name: " + this.name.trim();
     }
 }

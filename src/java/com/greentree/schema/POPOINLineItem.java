@@ -38,13 +38,13 @@ public class POPOINLineItem extends POPOLineItem {
     }
 
     public String getDescription() {
-        return EntityAccess.sendMsgGetString(this, "getDescription");
+        return EntityAccess.sendMsgGetString(this, "getDescription").trim();
     }
 
     @Override
     public String toString() {
         return this.getQuantity().toString() + " x "
-                + this.codeString.trim() + " - "
-                + this.codeDescription.trim();
+                + this.codeString + " - "
+                + this.codeDescription;
     }
 }

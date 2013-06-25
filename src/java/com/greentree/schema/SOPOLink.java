@@ -85,4 +85,11 @@ public class SOPOLink extends com.jadeworld.jade.rootschema.Object {
     public void setReleasedSOQty(java.math.BigDecimal releasedSOQty) {
         this.releasedSOQty = releasedSOQty;
     }
+
+    @Override
+    public String toString() {
+        String result = "LinkedPOQty: " + this.linkedPOQty.toString() + ". ";
+        result += "LinkedSOQty: " + this.linkedSOQty.toString() + ".";
+        return result;
+    }
 }

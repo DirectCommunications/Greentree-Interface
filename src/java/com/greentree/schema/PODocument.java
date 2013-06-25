@@ -75,19 +75,19 @@ public class PODocument extends com.jadeworld.jade.rootschema.Object {
     }
 
     public String getReference() {
-        return reference;
+        return reference.trim();
     }
 
     public void setReference(String reference) {
-        this.reference = reference;
+        this.reference = reference.trim();
     }
 
     public String getStandardText() {
-        return standardText;
+        return standardText.trim();
     }
 
     public void setStandardText(String standardText) {
-        this.standardText = standardText;
+        this.standardText = standardText.trim();
     }
 
     @SuppressWarnings("unchecked")

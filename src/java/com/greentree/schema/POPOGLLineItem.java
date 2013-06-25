@@ -14,6 +14,6 @@ public class POPOGLLineItem extends POPOLineItem {
     @Override
     public String toString() {
         return this.getQuantity().toString() + " x "
-                + this.getStandardText().trim();
+                + this.getStandardText();
     }
 }

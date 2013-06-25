@@ -23,19 +23,19 @@ public class LineItem extends com.jadeworld.jade.rootschema.Object {
     public String codeString;
 
     public String getCodeDescription() {
-        return codeDescription;
+        return codeDescription.trim();
     }
 
     public void setCodeDescription(String codeDescription) {
-        this.codeDescription = codeDescription;
+        this.codeDescription = codeDescription.trim();
     }
 
     public String getCodeString() {
-        return codeString;
+        return codeString.trim();
     }
 
     public void setCodeString(String codeString) {
-        this.codeString = codeString;
+        this.codeString = codeString.trim();
     }
 
     public PODocument getMyPODocument() {
@@ -62,10 +62,10 @@ public class LineItem extends com.jadeworld.jade.rootschema.Object {
 
     @DbProperty()
     public String getStandardText() {
-        return EntityAccess.getSLOBProperty(this, "standardText");
+        return EntityAccess.getSLOBProperty(this, "standardText").trim();
     }
 
     public void setStandardText(String standardText) {
-        EntityAccess.setSLOBProperty(this, "standardText", standardText);
+        EntityAccess.setSLOBProperty(this, "standardText", standardText.trim());
     }
 }

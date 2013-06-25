@@ -20,9 +20,17 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
     @DbField(length = 23)
     public String reference;
 
+    public String getReference() {
+        return reference.trim();
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference.trim();
+    }
+
     @DbProperty()
     public String getAdditionalDeliveryText() {
-        return EntityAccess.getSLOBProperty(this, "additionalDeliveryText");
+        return EntityAccess.getSLOBProperty(this, "additionalDeliveryText").trim();
     }
 
     public void setAdditionalDeliveryText(String additionalDeliveryText) {
@@ -32,47 +40,47 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
 
     @DbProperty()
     public String getAddress1() {
-        return EntityAccess.getSLOBProperty(this, "address1");
+        return EntityAccess.getSLOBProperty(this, "address1").trim();
     }
 
     public void setAddress1(String address1) {
-        EntityAccess.setSLOBProperty(this, "address1", address1);
+        EntityAccess.setSLOBProperty(this, "address1", address1.trim());
     }
 
     @DbProperty()
     public String getAddress2() {
-        return EntityAccess.getSLOBProperty(this, "address2");
+        return EntityAccess.getSLOBProperty(this, "address2").trim();
     }
 
     public void setAddress2(String address2) {
-        EntityAccess.setSLOBProperty(this, "address2", address2);
+        EntityAccess.setSLOBProperty(this, "address2", address2.trim());
     }
 
     @DbProperty()
     public String getAddress3() {
-        return EntityAccess.getSLOBProperty(this, "address3");
+        return EntityAccess.getSLOBProperty(this, "address3").trim();
     }
 
     public void setAddress3(String address3) {
-        EntityAccess.setSLOBProperty(this, "address3", address3);
+        EntityAccess.setSLOBProperty(this, "address3", address3.trim());
     }
 
     @DbProperty()
     public String getAddressName() {
-        return EntityAccess.getSLOBProperty(this, "addressName");
+        return EntityAccess.getSLOBProperty(this, "addressName").trim();
     }
 
     public void setAddressName(String addressName) {
-        EntityAccess.setSLOBProperty(this, "addressName", addressName);
+        EntityAccess.setSLOBProperty(this, "addressName", addressName.trim());
     }
 
     @DbProperty()
     public String getAddressNumber() {
-        return EntityAccess.getSLOBProperty(this, "addressNumber");
+        return EntityAccess.getSLOBProperty(this, "addressNumber").trim();
     }
 
     public void setAddressNumber(String addressNumber) {
-        EntityAccess.setSLOBProperty(this, "addressNumber", addressNumber);
+        EntityAccess.setSLOBProperty(this, "addressNumber", addressNumber.trim());
     }
 
     @SuppressWarnings("unchecked")
@@ -104,20 +112,20 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
 
     @DbProperty()
     public String getEmail() {
-        return EntityAccess.getSLOBProperty(this, "email");
+        return EntityAccess.getSLOBProperty(this, "email").trim();
     }
 
     public void setEmail(String email) {
-        EntityAccess.setSLOBProperty(this, "email", email);
+        EntityAccess.setSLOBProperty(this, "email", email.trim());
     }
 
     @DbProperty()
     public String getFaxNo() {
-        return EntityAccess.getSLOBProperty(this, "faxNo");
+        return EntityAccess.getSLOBProperty(this, "faxNo").trim();
     }
 
     public void setFaxNo(String faxNo) {
-        EntityAccess.setSLOBProperty(this, "faxNo", faxNo);
+        EntityAccess.setSLOBProperty(this, "faxNo", faxNo.trim());
     }
 
     @DbProperty()
@@ -127,13 +135,5 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
 
     public void setIsPrinted(boolean isPrinted) {
         EntityAccess.setBooleanProperty(this, "isPrinted", isPrinted);
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
     }
 }

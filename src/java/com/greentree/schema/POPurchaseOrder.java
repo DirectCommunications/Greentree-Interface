@@ -49,4 +49,12 @@ public class POPurchaseOrder extends PODocument {
     public void setMySupplier(Supplier mySupplier) {
         EntityAccess.setReferenceProperty(this, "mySupplier", mySupplier);
     }
+
+    @Override
+    public String toString() {
+        String result = "Purchase Order Number: " + this.reference + ". ";
+        result += "Date: " + this.documentDate + ". ";
+        result += "Supplier: " + this.getMySupplier();
+        return result;
+    }
 }
