@@ -1,8 +1,9 @@
 (defproject org.clojars.luminousmonkey/greentree-interface "0.0.1-SNAPSHOT"
   :description "Clojure library for interfacing with Greentree."
   :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "BSD 2-Clause Licence"
+            :url "http://opensource.org/licenses/BSD-2-Clause"
+            :distribution :repo}
   :min-lein-version "2.0.0"
   :source-paths ["src/clojure"]
   :java-source-paths ["src/java"]
