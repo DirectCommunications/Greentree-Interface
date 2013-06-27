@@ -3,13 +3,13 @@
  *
  * Licensed under the BSD License.
  */
-
 package com.greentree.schema;
 
 import com.jadeworld.jade.entitymanager.EntityAccess;
 import com.jadeworld.jade.persistence.DbProperty;
 import com.jadeworld.jade.persistence.DbField;
 import com.jadeworld.jade.persistence.Entity;
+import com.jadeworld.jade.persistence.Lob;
 import com.jadeworld.jade.persistence.OneToMany;
 import com.jadeworld.jade.persistence.ReferenceRelationshipType;
 import com.jadeworld.jade.persistence.ReferenceUpdateMode;
@@ -17,70 +17,78 @@ import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 @Entity()
 public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
 
+    @Lob()
+    @DbField()
+    public String additionalDeliveryText;
+    @Lob()
+    @DbField()
+    public String address1;
+    @Lob()
+    @DbField()
+    public String address2;
+    @Lob()
+    @DbField()
+    public String address3;
+    @Lob()
+    @DbField()
+    public String addressName;
+    @DbField(type = "Date")
+    public java.util.Calendar datePrinted;
+    @DbField(type = "Date")
+    public java.util.Calendar documentDate;
+    @Lob()
+    @DbField()
+    public String faxNo;
+    @Lob()
+    @DbField()
+    public String phoneNo;
+    @Lob()
+    @DbField()
+    public String postCode;
     @DbField(length = 23)
     public String reference;
+    @Lob()
+    @DbField()
+    public String standardText;
 
-    public String getReference() {
-        return reference.trim();
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference.trim();
-    }
-
-    @DbProperty()
     public String getAdditionalDeliveryText() {
-        return EntityAccess.getSLOBProperty(this, "additionalDeliveryText").trim();
+        return additionalDeliveryText.trim();
     }
 
     public void setAdditionalDeliveryText(String additionalDeliveryText) {
-        EntityAccess.setSLOBProperty(this, "additionalDeliveryText",
-                additionalDeliveryText);
+        this.additionalDeliveryText = additionalDeliveryText.trim();
     }
 
-    @DbProperty()
     public String getAddress1() {
-        return EntityAccess.getSLOBProperty(this, "address1").trim();
+        return address1.trim();
     }
 
     public void setAddress1(String address1) {
-        EntityAccess.setSLOBProperty(this, "address1", address1.trim());
+        this.address1 = address1.trim();
     }
 
-    @DbProperty()
     public String getAddress2() {
-        return EntityAccess.getSLOBProperty(this, "address2").trim();
+        return address2.trim();
     }
 
     public void setAddress2(String address2) {
-        EntityAccess.setSLOBProperty(this, "address2", address2.trim());
+        this.address2 = address2.trim();
     }
 
-    @DbProperty()
     public String getAddress3() {
-        return EntityAccess.getSLOBProperty(this, "address3").trim();
+        return address3.trim();
     }
 
     public void setAddress3(String address3) {
-        EntityAccess.setSLOBProperty(this, "address3", address3.trim());
+        this.address3 = address3.trim();
     }
 
-    @DbProperty()
     public String getAddressName() {
-        return EntityAccess.getSLOBProperty(this, "addressName").trim();
+        return addressName.trim();
     }
 
     public void setAddressName(String addressName) {
-        EntityAccess.setSLOBProperty(this, "addressName", addressName.trim());
-    }
-
-    @DbProperty()
-    public String getAddressNumber() {
-        return EntityAccess.getSLOBProperty(this, "addressNumber").trim();
-    }
-
-    public void setAddressNumber(String addressNumber) {
-        EntityAccess.setSLOBProperty(this, "addressNumber", addressNumber.trim());
+        this.addressName = addressName.trim();
     }
 
     @SuppressWarnings("unchecked")
@@ -92,22 +100,20 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
         return (LineItemArray<LineItem>) EntityAccess.getReferenceProperty(this, "allLineItems");
     }
 
-    @DbProperty(type = "Date")
     public java.util.Calendar getDatePrinted() {
-        return EntityAccess.getDateProperty(this, "datePrinted");
+        return datePrinted;
     }
 
     public void setDatePrinted(java.util.Calendar datePrinted) {
-        EntityAccess.setDateProperty(this, "datePrinted", datePrinted);
+        this.datePrinted = datePrinted;
     }
 
-    @DbProperty(type = "Date")
     public java.util.Calendar getDocumentDate() {
-        return EntityAccess.getDateProperty(this, "documentDate");
+        return documentDate;
     }
 
     public void setDocumentDate(java.util.Calendar documentDate) {
-        EntityAccess.setDateProperty(this, "documentDate", documentDate);
+        this.documentDate = documentDate;
     }
 
     @DbProperty()
@@ -119,13 +125,44 @@ public abstract class SODocument extends com.jadeworld.jade.rootschema.Object {
         EntityAccess.setSLOBProperty(this, "email", email.trim());
     }
 
-    @DbProperty()
     public String getFaxNo() {
-        return EntityAccess.getSLOBProperty(this, "faxNo").trim();
+        return faxNo.trim();
     }
 
     public void setFaxNo(String faxNo) {
-        EntityAccess.setSLOBProperty(this, "faxNo", faxNo.trim());
+        this.faxNo = faxNo.trim();
+    }
+
+    public String getPhoneNo() {
+        return phoneNo.trim();
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo.trim();
+    }
+
+    public String getPostCode() {
+        return postCode.trim();
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode.trim();
+    }
+
+    public String getReference() {
+        return reference.trim();
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference.trim();
+    }
+
+    public String getStandardText() {
+        return standardText.trim();
+    }
+
+    public void setStandardText(String standardText) {
+        this.standardText = standardText.trim();
     }
 
     @DbProperty()

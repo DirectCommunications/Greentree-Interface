@@ -6,36 +6,40 @@
 
 package com.greentree.schema;
 
-import com.jadeworld.jade.rootschema.MemberKeyDictionary;
-import com.jadeworld.jade.entitymanager.EntityAccess;
-import com.jadeworld.jade.rootschema.Iterator;
 import com.jadeworld.jade.ByRef;
+import com.jadeworld.jade.entitymanager.EntityAccess;
 import com.jadeworld.jade.persistence.CollectionEntity;
 import com.jadeworld.jade.persistence.DictionaryKey;
+import com.jadeworld.jade.rootschema.MemberKeyDictionary;
+import java.util.Iterator;
 
-@SuppressWarnings("unchecked")
 @CollectionEntity(keys = {
     @DictionaryKey(key = "reference")})
-public class POByReferenceDict<PODocument> extends MemberKeyDictionary<PODocument> {
+public class SODocumentByReferenceDict<SODocument> extends MemberKeyDictionary<SODocument> {
 
-    public PODocument getAtKey(String reference) {
-        return (PODocument) EntityAccess.sendMsgGetReference(this, "getAtKey", reference);
+    public SODocument getAtKey(String reference) {
+        return (SODocument) EntityAccess.sendMsgGetReference(this,
+                "getAtKey", reference);
     }
 
-    public PODocument getAtKeyGeq(String reference) {
-        return (PODocument) EntityAccess.sendMsgGetReference(this, "getAtKeyGeq", reference);
+    public SODocument getAtKeyGeq(String reference) {
+        return (SODocument) EntityAccess.sendMsgGetReference(this,
+                "getAtKeyGeq", reference);
     }
 
-    public PODocument getAtKeyGtr(String reference) {
-        return (PODocument) EntityAccess.sendMsgGetReference(this, "getAtKeyGtr", reference);
+    public SODocument getAtKeyGtr(String reference) {
+        return (SODocument) EntityAccess.sendMsgGetReference(this,
+                "getAtKeyGtr", reference);
     }
 
-    public PODocument getAtKeyLeq(String reference) {
-        return (PODocument) EntityAccess.sendMsgGetReference(this, "getAtKeyLeq", reference);
+    public SODocument getAtKeyLeq(String reference) {
+        return (SODocument) EntityAccess.sendMsgGetReference(this,
+                "getAtKeyLeq", reference);
     }
 
-    public PODocument getAtKeyLss(String reference) {
-        return (PODocument) EntityAccess.sendMsgGetReference(this, "getAtKeyLss", reference);
+    public SODocument getAtKeyLss(String reference) {
+        return (SODocument) EntityAccess.sendMsgGetReference(this,
+                "getAtKeyLss", reference);
     }
 
     public void getIteratorKeys(Iterator iter, ByRef<String> reference) {
@@ -58,7 +62,7 @@ public class POByReferenceDict<PODocument> extends MemberKeyDictionary<PODocumen
         EntityAccess.sendMsg(this, "startKeyLss", reference, iter);
     }
 
-    public PODocument putAtKey(PODocument value, String reference) {
+    public SODocument putAtKey(SODocument value, String reference) {
         EntityAccess.sendMsg(this, "putAtKey", reference, value);
         return value;
     }
@@ -67,7 +71,7 @@ public class POByReferenceDict<PODocument> extends MemberKeyDictionary<PODocumen
         EntityAccess.sendMsg(this, "removeKey", reference);
     }
 
-    public void removeKeyEntry(PODocument value, String reference) {
+    public void removeKeyEntry(SODocument value, String reference) {
         EntityAccess.sendMsg(this, "removeKeyEntry", reference, value);
     }
 
@@ -76,7 +80,7 @@ public class POByReferenceDict<PODocument> extends MemberKeyDictionary<PODocumen
     }
 
     @Override
-    public boolean includes(PODocument element) {
+    public boolean includes(SODocument element) {
         return EntityAccess.sendMsgGetBoolean(this, "includes", element);
     }
 }

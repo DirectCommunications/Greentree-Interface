@@ -10,7 +10,7 @@ import com.jadeworld.jade.persistence.Entity;
 import com.jadeworld.jade.persistence.DbField;
 
 @Entity()
-public abstract class SalesOrderLine extends com.jadeworld.jade.rootschema.Object {
+public abstract class SalesOrderLine extends LineItem {
 
     @DbField(length = 30)
     public String reference;
