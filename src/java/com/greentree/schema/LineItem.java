@@ -11,6 +11,9 @@ import com.jadeworld.jade.persistence.DbProperty;
 import com.jadeworld.jade.persistence.DbField;
 import com.jadeworld.jade.persistence.Entity;
 import com.jadeworld.jade.persistence.Lob;
+import com.jadeworld.jade.persistence.ManyToOne;
+import com.jadeworld.jade.persistence.ReferenceRelationshipType;
+import com.jadeworld.jade.persistence.ReferenceUpdateMode;
 
 @Entity()
 public class LineItem extends com.jadeworld.jade.rootschema.Object {
@@ -99,6 +102,18 @@ public class LineItem extends com.jadeworld.jade.rootschema.Object {
 
     public void setStandardText(String standardText) {
         EntityAccess.setSLOBProperty(this, "standardText", standardText.trim());
+    }
+
+    @DbProperty()
+    @ManyToOne(relationshipType = ReferenceRelationshipType.PEER,
+            updateMode = ReferenceUpdateMode.MANUAL,
+            inverses = {"allSOSalesOrders", "allSalesOrdersByOrderNumber"})
+    public Customer getMyCustomer() {
+        return (Customer) EntityAccess.getReferenceProperty(this, "myCustomer");
+    }
+
+    public void setMyCustomer(Customer myCustomer) {
+        EntityAccess.setReferenceProperty(this, "myCustomer", myCustomer);
     }
 
     @Override
