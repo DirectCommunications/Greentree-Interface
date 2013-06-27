@@ -24,8 +24,8 @@
 (extend-protocol PurchaseOrderLine
   com.greentree.schema.POPOINLineItem
   (quantity [this] (.getQuantity this))
-  (part-number [this] (.codeString this))
-  (description [this] (.codeDescription this))
+  (part-number [this] (.getCodeString this))
+  (description [this] (.getCodeDescription this))
   (sales-orders [this] (map transform-sopo-link (.getAllSOPOLinks this)))
   (job-reference [this] nil)
 

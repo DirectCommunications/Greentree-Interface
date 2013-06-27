@@ -2,8 +2,9 @@
   (:require [clojure.pprint :refer (pprint)]
             [clojure.repl :refer :all]
             [clojure.tools.namespace.repl :refer (refresh refresh-all)]
-            [au.com.directcommunications.greentree.system :as system]
-            [au.com.directcommunications.greentree.purchase-order :as purchase-order]
+            (au.com.directcommunications.greentree [system :as system]
+                                                   [purchase-order :as purchase-order]
+                                                   [sales-order :as sales-order])
             [config :as dev-config]))
 
 (def system nil)

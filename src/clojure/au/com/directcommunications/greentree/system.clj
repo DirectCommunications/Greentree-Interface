@@ -3,7 +3,7 @@
   (:import (com.jadeworld.jade.entitymanager
             EntityManager EntityManagerFactory Persistence)
            (java.util Properties)
-           (com.greentree.schema POControl)))
+           (com.greentree.schema POControl SOControl)))
 
 (defn system
   "Returns a new instance of the whole application."
@@ -48,12 +48,16 @@
              (construct-properties system))
         em (.createEntityManager emf)
         purchase-order-control (.firstInstance em POControl)
-        purchase-order-lookup (.getAllPOPurchaseOrders purchase-order-control)]
+        purchase-order-lookup (.getAllPOPurchaseOrders purchase-order-control)
+        sales-order-control (.firstInstance em SOControl)
+        sales-order-lookup (.getAllSOSalesOrders sales-order-control)]
     (cleanup-connection system)
     (reset! (:entity-manager-factory system) emf)
     (reset! (:entity-manager system) em)
     (merge system {:purchase-order-control purchase-order-control
-                   :purchase-order-lookup purchase-order-lookup})))
+                   :purchase-order-lookup purchase-order-lookup
+                   :sales-order-control sales-order-control
+                   :sales-order-lookup sales-order-lookup})))
 
 (defn stop
   "Performs side effects to shut down the system and release its resources. Returns an updated instance of the system."
