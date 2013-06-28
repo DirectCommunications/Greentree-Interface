@@ -1,4 +1,4 @@
-(defproject org.clojars.luminousmonkey/greentree-interface "0.0.1-SNAPSHOT"
+(defproject org.clojars.luminousmonkey/greentree-interface "0.0.2-SNAPSHOT"
   :description "Clojure library for interfacing with Greentree."
   :url "http://example.com/FIXME"
   :license {:name "BSD 2-Clause Licence"
