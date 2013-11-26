@@ -15,6 +15,24 @@
   (total [this] "Return the line total."))
 
 (extend-protocol SalesOrderLine
+  com.greentree.schema.SOSOTOLineItem
+  (quantity [this] nil)
+  (part-number [this] nil)
+  (description [this] (.getStandardText this))
+  (narration [this] nil)
+  (unit-price [this] nil)
+  (tax [this] nil)
+  (total [this] nil)
+
+  com.greentree.schema.SOSOGLLineItem
+  (quantity [this] (.getQuantity this))
+  (part-number [this] (.getCodeDescription this))
+  (description [this] (.getStandardText this))
+  (narration [this] nil)
+  (unit-price [this] (.getUnitPrice this))
+  (tax [this] (.getLcTaxAmount this))
+  (total [this] (.getLcAmount this))
+
   com.greentree.schema.LineItem
   (quantity [this] (.getQuantity this))
   (part-number [this] (.getCodeString this))
@@ -41,6 +59,7 @@
   {:sales-order-number (.getReference sales-order)
    :date (.getDocumentDate sales-order)
    :customer (.getMyCustomer sales-order)
+   :public-notes (.getStandardText sales-order)
    :lines (map transform-line (.getAllLineItems sales-order))})
 
 (defn get-sales-order
