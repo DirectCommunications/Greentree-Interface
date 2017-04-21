@@ -1,9 +1,11 @@
 (defproject org.clojars.luminousmonkey/greentree-interface "0.0.2-SNAPSHOT"
   :description "Clojure library for interfacing with Greentree."
   :url "http://example.com/FIXME"
-  :license {:name "BSD 2-Clause Licence"
-            :url "http://opensource.org/licenses/BSD-2-Clause"
-            :distribution :repo}
+  :license {:name "MIT License"
+            :url "https://opensource.org/licenses/MIT"
+            :distribution :repo
+            :year 2017
+            :key "mit"}
   :min-lein-version "2.0.0"
   :source-paths ["src/clojure"]
   :java-source-paths ["src/java"]

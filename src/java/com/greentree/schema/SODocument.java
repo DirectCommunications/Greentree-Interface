@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2013 Direct Communications
  *
- * Licensed under the BSD License.
+ * Licensed under the MIT License.
  */
 package com.greentree.schema;
 
